@@ -1,0 +1,131 @@
+.home-main {
+    .top-ipt {
+        display: flex;
+        align-items: center;
+
+        .lt-icon,
+        .rt-men {
+            width: 0.76rem;
+        }
+
+        .cen-searh {
+            flex: 1;
+
+            .am-search {
+                background: #fff;
+
+                .am-search-input {
+                    background: #efeff4;
+                    border-radius: 0.4rem;
+                }
+
+                .am-search-cancel {
+                    display: none;
+                }
+
+            }
+
+
+        }
+    }
+
+    .home-conent {
+
+        .choose-type {
+            padding: 0 15px;
+
+            display: flex;
+            justify-content: space-around;
+
+            .type-box {
+                width: 1.5rem;
+                cursor: pointer;
+
+                p {
+                    font-size: 0.24rem;
+                    padding: 5px 0;
+                }
+            }
+        }
+
+        .carousel-wrap {
+            padding: 0 15px;
+
+            margin-top: 10px;
+        }
+
+        .day-recommend {
+            background: #f5f4f4;
+            padding-bottom: 5px;
+            margin-top: 15px;
+
+            h4 {
+                font-size: 0.38rem;
+                padding-top: 10px;
+                font-weight: 600;
+            }
+
+            .day-box {
+                border-radius: 5px;
+                background: #fff;
+                box-shadow: 0px 0 10px #b3989f;
+                width: 96%;
+                margin: 10px auto;
+
+                img {
+                    width: 100%;
+                    height: 4rem;
+                }
+
+                .dish-info {
+                    .dish-name {
+                        text-align: left;
+                        color: #000;
+                        font-weight: 600;
+                        padding: 8px 10px 0;
+                        font-size: 0.30rem;
+                    }
+
+                    .bottom {
+                        height: 0.8rem;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .author-box {
+                            padding-left: 15px;
+
+                            img {
+                                width: 0.4rem;
+                                height: 0.4rem;
+                                border-radius: 50%;
+                            }
+
+                            .aut-name {
+                                line-height: 0.4rem;
+                                font-size: 0.24rem;
+                                color: #000;
+                                margin-left: 5px;
+
+                            }
+                        }
+
+                        .collect-box {
+                            line-height: 0.4rem;
+                            padding-right: 15px;
+                            display: flex;
+                            align-items: center;
+                            color: #999;
+
+                            span {
+                                margin-left: 5px;
+                                font-size: 0.24rem;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
