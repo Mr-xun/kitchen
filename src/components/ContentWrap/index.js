@@ -8,6 +8,7 @@ import {
     Redirect
 } from "react-router-dom";
 import Home from "../../pages/Home";
+import KitchenStory from "../../pages/KitchenStory";
 export default class ConentWrap extends Component {
     constructor(props) {
         super(props);
@@ -24,6 +25,11 @@ export default class ConentWrap extends Component {
                     <div className="main">
                         <Switch>
                             <Route exact path="/home" component={Home}></Route>
+                            <Route
+                                exact
+                                path="/kitchenStory"
+                                component={KitchenStory}
+                            ></Route>
                             <Redirect exact path="/" to="/home"></Redirect>
                         </Switch>
                     </div>

@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import { TabBar } from "antd-mobile";
-export default class FootBar extends Component {
-    constructor() {
-        super();
+import { withRouter } from "react-router-dom";
+class FootBar extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
             selectedTab: "redTab",
             hidden: false,
             fullScreen: false
         };
+    }
+    componentDidMount() {
+        console.log(this);
     }
     render() {
         return (
@@ -44,6 +48,7 @@ export default class FootBar extends Component {
                         this.setState({
                             selectedTab: "blueTab"
                         });
+                        this.props.history.push("/home");
                     }}
                     data-seed="logId"
                 ></TabBar.Item>
@@ -106,6 +111,7 @@ export default class FootBar extends Component {
                         this.setState({
                             selectedTab: "greenTab"
                         });
+                        this.props.history.push("/kitchenStory");
                     }}
                 ></TabBar.Item>
                 <TabBar.Item
@@ -142,3 +148,5 @@ export default class FootBar extends Component {
         );
     }
 }
+
+export default withRouter(FootBar);

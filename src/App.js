@@ -6,7 +6,7 @@ import {
     Switch,
     Redirect
 } from "react-router-dom";
-import ConentWrap from "./components/ConentWrap";
+import ContentWrap from "./components/ContentWrap";
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -21,17 +21,13 @@ export default class App extends Component {
             <div className="App">
                 <Router>
                     <Switch>
-                        <Route
-                            exact
-                            path="/home"
-                            component={ConentWrap}
-                        ></Route>
                         <Redirect
                             exact
                             path="/index.html"
                             to="/home"
                         ></Redirect>
                         <Redirect exact path="/" to="/home"></Redirect>
+                        <Route component={ContentWrap} />
                     </Switch>
                 </Router>
             </div>

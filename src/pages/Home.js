@@ -66,91 +66,97 @@ export default class Home extends Component {
                             <p>中西厨房</p>
                         </div>
                     </div>
-                    <div className="carousel-wrap">
-                        <Carousel
-                            autoplay={true}
-                            infinite
-                            beforeChange={(from, to) =>
-                                console.log(`slide from ${from} to ${to}`)
-                            }
-                            afterChange={index =>
-                                console.log("slide to", index)
-                            }
-                        >
-                            {this.state.data.map(val => (
-                                <a
-                                    key={val}
-                                    href="http://www.alipay.com"
-                                    style={{
-                                        display: "inline-block",
-                                        width: "100%",
-                                        height: this.state.imgHeight
-                                    }}
-                                >
-                                    <img
-                                        src={require("../assets/images/dish_one.jpg")}
-                                        alt=""
+                    <div className="bot-content">
+                        <div className="carousel-wrap">
+                            <Carousel
+                                autoplay={true}
+                                infinite
+                                beforeChange={(from, to) =>
+                                    console.log(`slide from ${from} to ${to}`)
+                                }
+                                afterChange={index =>
+                                    console.log("slide to", index)
+                                }
+                            >
+                                {this.state.data.map(val => (
+                                    <a
+                                        key={val}
+                                        href="http://www.alipay.com"
                                         style={{
+                                            display: "inline-block",
                                             width: "100%",
-                                            height: "4rem",
-                                            verticalAlign: "top"
+                                            height: this.state.imgHeight
                                         }}
-                                        onLoad={() => {
-                                            // fire window resize event to change height
-                                            window.dispatchEvent(
-                                                new Event("resize")
-                                            );
-                                            this.setState({
-                                                imgHeight: "auto"
-                                            });
-                                        }}
-                                    />
-                                </a>
-                            ))}
-                        </Carousel>
-                    </div>
-                    <div className="day-recommend">
-                        <h4>每日推荐</h4>
-                        <div className="day-box">
-                            <img
-                                src={require("../assets/images/dish_one.jpg")}
-                                alt=""
-                            />
-                            <div className="dish-info">
-                                <h5 className="dish-name">宫保鸡丁</h5>
-                                <div className="bottom">
-                                    <div className="author-box">
+                                    >
                                         <img
-                                            src={require("../assets/images/auto_1.jpg")}
+                                            src={require("../assets/images/dish_one.jpg")}
                                             alt=""
+                                            style={{
+                                                width: "100%",
+                                                height: "4rem",
+                                                verticalAlign: "top"
+                                            }}
+                                            onLoad={() => {
+                                                // fire window resize event to change height
+                                                window.dispatchEvent(
+                                                    new Event("resize")
+                                                );
+                                                this.setState({
+                                                    imgHeight: "auto"
+                                                });
+                                            }}
                                         />
-                                        <span className="aut-name">小家常</span>
-                                    </div>
-                                    <div className="collect-box">
-                                        <Icon type="ellipsis" />
-                                        <span>16.5W</span>
+                                    </a>
+                                ))}
+                            </Carousel>
+                        </div>
+                        <div className="day-recommend">
+                            <h4>每日推荐</h4>
+                            <div className="day-box">
+                                <img
+                                    src={require("../assets/images/dish_one.jpg")}
+                                    alt=""
+                                />
+                                <div className="dish-info">
+                                    <h5 className="dish-name">宫保鸡丁</h5>
+                                    <div className="bottom">
+                                        <div className="author-box">
+                                            <img
+                                                src={require("../assets/images/auto_1.jpg")}
+                                                alt=""
+                                            />
+                                            <span className="aut-name">
+                                                小家常
+                                            </span>
+                                        </div>
+                                        <div className="collect-box">
+                                            <Icon type="ellipsis" />
+                                            <span>16.5W</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="day-box">
-                            <img
-                                src={require("../assets/images/dish_one.jpg")}
-                                alt=""
-                            />
-                            <div className="dish-info">
-                                <h5 className="dish-name">宫保鸡丁</h5>
-                                <div className="bottom">
-                                    <div className="author-box">
-                                        <img
-                                            src={require("../assets/images/auto_1.jpg")}
-                                            alt=""
-                                        />
-                                        <span className="aut-name">小家常</span>
-                                    </div>
-                                    <div className="collect-box">
-                                        <Icon type="ellipsis" />
-                                        <span>16.5W</span>
+                            <div className="day-box">
+                                <img
+                                    src={require("../assets/images/dish_one.jpg")}
+                                    alt=""
+                                />
+                                <div className="dish-info">
+                                    <h5 className="dish-name">宫保鸡丁</h5>
+                                    <div className="bottom">
+                                        <div className="author-box">
+                                            <img
+                                                src={require("../assets/images/auto_1.jpg")}
+                                                alt=""
+                                            />
+                                            <span className="aut-name">
+                                                小家常
+                                            </span>
+                                        </div>
+                                        <div className="collect-box">
+                                            <Icon type="ellipsis" />
+                                            <span>16.5W</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

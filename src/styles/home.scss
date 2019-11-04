@@ -1,5 +1,10 @@
 .home-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
     .top-ipt {
+        height: 0.88rem;
         display: flex;
         align-items: center;
 
@@ -22,20 +27,21 @@
                 .am-search-cancel {
                     display: none;
                 }
-
             }
-
-
         }
     }
 
     .home-conent {
+        flex: 1;
+        flex-direction: column;
+        display: flex;
 
         .choose-type {
             padding: 0 15px;
 
             display: flex;
             justify-content: space-around;
+            height: 1.1rem;
 
             .type-box {
                 width: 1.5rem;
@@ -46,6 +52,11 @@
                     padding: 5px 0;
                 }
             }
+        }
+
+        .bot-content {
+            flex: 1;
+            overflow: auto;
         }
 
         .carousel-wrap {
