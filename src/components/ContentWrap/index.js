@@ -21,14 +21,26 @@ export default class ConentWrap extends Component {
                 <Router>
                     <div className="main">
                         <Switch>
-                            <Route exact path="/home" component={Home}></Route>
-                            <Route exact path="/find" component={Find}></Route>
                             <Route
                                 exact
-                                path="/kitchenStory"
+                                path="/kitchen/home"
+                                component={Home}
+                            ></Route>
+                            <Route
+                                exact
+                                path="/kitchen/find"
+                                component={Find}
+                            ></Route>
+                            <Route
+                                exact
+                                path="/kitchen/kitchenStory"
                                 component={KitchenStory}
                             ></Route>
-                            <Route exact path="/more" component={More}></Route>
+                            <Route
+                                exact
+                                path="/kitchen/more"
+                                component={More}
+                            ></Route>
                         </Switch>
                     </div>
                     <div className="foot">

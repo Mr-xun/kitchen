@@ -3,7 +3,10 @@ import { List } from "antd-mobile";
 import "../styles/more.scss";
 const Item = List.Item;
 export default class More extends Component {
-    constructor() {}
+    constructor() {
+        super();
+        this.state = {}
+    }
     render() {
         return (
             <div className="more-main">

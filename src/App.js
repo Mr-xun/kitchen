@@ -15,15 +15,18 @@ export default class App extends Component {
         return (
             <div className="App">
                 <Router>
-                    <Switch>
-                        <Redirect
-                            exact
-                            path="/index.html"
-                            to="/home"
-                        ></Redirect>
-                        <Redirect exact path="/" to="/home"></Redirect>
-                        <Route component={ContentWrap} />
-                    </Switch>
+                    <Route
+                        exact
+                        path="/kitchen/home"
+                        component={ContentWrap}
+                    ></Route>
+                    <Route component={ContentWrap} />
+                    <Redirect exact path="/" to="/kitchen/home"></Redirect>
+                    <Redirect
+                        exact
+                        path="/index.html"
+                        to="/kitchen/home"
+                    ></Redirect>
                 </Router>
             </div>
         );
