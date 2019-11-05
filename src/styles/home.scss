@@ -7,6 +7,7 @@
         height: 0.88rem;
         display: flex;
         align-items: center;
+        padding: 0 5px;
 
         .lt-icon,
         .rt-men {
@@ -37,10 +38,10 @@
         display: flex;
 
         .choose-type {
+            margin-top: 5px;
             padding: 0 15px;
-
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             height: 1.1rem;
 
             .type-box {
@@ -79,7 +80,7 @@
             .day-box {
                 border-radius: 5px;
                 background: #fff;
-                box-shadow: 0px 0 10px #b3989f;
+                box-shadow: 0px 0 1px #b3989f;
                 width: 96%;
                 margin: 10px auto;
 

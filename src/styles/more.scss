@@ -1,0 +1,67 @@
+.more-main {
+    .more-title {
+        font-size: 0.36rem;
+        text-align: center;
+        color: #000;
+        font-weight: 600;
+        height: 0.88rem;
+        line-height: 0.88rem;
+        box-shadow: 0px 15px 10px -15px #ccc;
+
+    }
+
+    .top-info {
+        margin-top: 20px;
+
+        .nolog-img {
+            width: 2.2rem;
+            height: 2.2rem;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 0.02rem solid #999;
+            background: #f3f3f3;
+
+            img {
+                width: 70%;
+                height: 70%;
+            }
+        }
+
+        .login-txt {
+            margin-top: 15px;
+            color: #4e4e4e;
+
+            h5 {
+                font-size: 0.36rem;
+
+            }
+
+            p {
+                margin-top: 8px;
+                line-height: 0.28rem;
+                letter-spacing: 3px;
+                font-size: 0.24rem;
+            }
+        }
+    }
+
+    .list-cont {
+        margin-top: 0.8rem;
+        padding: 0 10px;
+
+        .am-list-item {
+            img {
+                width: 0.4rem;
+                height: 0.4rem;
+            }
+
+            .am-list-content {
+                font-size: 0.34rem;
+            }
+        }
+    }
+}

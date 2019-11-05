@@ -1,6 +1,6 @@
 import React, { PureComponent as Component } from "react";
 import "../styles/home.scss";
-import { Icon, Carousel } from "antd-mobile";
+import { Carousel } from "antd-mobile";
 import SearchInp from "../components/SearchInp";
 export default class Home extends Component {
     constructor() {
@@ -19,7 +19,14 @@ export default class Home extends Component {
             <div className="home-main">
                 <div className="top-ipt">
                     <div className="lt-icon">
-                        <Icon type="ellipsis" />
+                        <img
+                            style={{
+                                width: "22px",
+                                height: "22px"
+                            }}
+                            src={require("../assets/images/home.png")}
+                            alt=""
+                        />
                     </div>
                     <div className="cen-searh">
                         <SearchInp />
@@ -130,7 +137,14 @@ export default class Home extends Component {
                                             </span>
                                         </div>
                                         <div className="collect-box">
-                                            <Icon type="ellipsis" />
+                                            <img
+                                                style={{
+                                                    width: "12px",
+                                                    height: "12px"
+                                                }}
+                                                src={require("../assets/images/shoucang.png")}
+                                                alt=""
+                                            />
                                             <span>16.5W</span>
                                         </div>
                                     </div>
@@ -154,7 +168,14 @@ export default class Home extends Component {
                                             </span>
                                         </div>
                                         <div className="collect-box">
-                                            <Icon type="ellipsis" />
+                                            <img
+                                                style={{
+                                                    width: "12px",
+                                                    height: "12px"
+                                                }}
+                                                src={require("../assets/images/shoucang_act.png")}
+                                                alt=""
+                                            />
                                             <span>16.5W</span>
                                         </div>
                                     </div>

@@ -5,7 +5,7 @@ class FootBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: "redTab",
+            selectedTab: "blueTab",
             hidden: false,
             fullScreen: false
         };
@@ -48,7 +48,7 @@ class FootBar extends Component {
                         this.setState({
                             selectedTab: "blueTab"
                         });
-                        this.props.history.push("/home");
+                        this.props.history.push("/kitchen/home");
                     }}
                     data-seed="logId"
                 ></TabBar.Item>
@@ -80,6 +80,7 @@ class FootBar extends Component {
                         this.setState({
                             selectedTab: "redTab"
                         });
+                        this.props.history.push("/kitchen/find");
                     }}
                     data-seed="logId1"
                 ></TabBar.Item>
@@ -111,7 +112,7 @@ class FootBar extends Component {
                         this.setState({
                             selectedTab: "greenTab"
                         });
-                        this.props.history.push("/kitchenStory");
+                        this.props.history.push("/kitchen/kitchenStory");
                     }}
                 ></TabBar.Item>
                 <TabBar.Item
@@ -142,6 +143,7 @@ class FootBar extends Component {
                         this.setState({
                             selectedTab: "yellowTab"
                         });
+                        this.props.history.push("/kitchen/more");
                     }}
                 ></TabBar.Item>
             </TabBar>
