@@ -1,0 +1,83 @@
+.register-main {
+    .top-back {
+        height: 0.88rem;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+
+        img {
+            width: 22px;
+            height: 22px;
+        }
+    }
+
+    .register-wrap {
+        text-align: center;
+        margin-top: 10px;
+        color: #010101;
+        padding: 0.4rem 30px;
+
+        h3 {
+            font-size: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 5px;
+        }
+
+        .form-content {
+            margin-top: 1rem;
+
+            .am-input-label {
+                width: 35px;
+            }
+
+            .btn {
+                margin-top: 0.79rem;
+            }
+
+            .choose-fun {
+                margin-top: 0.5rem;
+                color: #999;
+                font-size: 0.28rem;
+
+                em {
+                    margin: 0 0.18rem;
+                }
+            }
+        }
+
+    }
+
+    .more-register {
+        display: flex;
+        justify-content: space-around;
+        padding: 0 1rem;
+        margin-top: 0.2rem;
+
+        .register-box {
+            width: 0.8rem;
+            height: 0.8rem;
+            border: 0.02rem solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 50%;
+
+            img {
+                width: 0.5rem;
+                height: 0.5rem;
+            }
+        }
+    }
+
+    .register-tip {
+        margin-top: 0.6rem;
+        color: #999;
+        font-size: 0.26rem;
+        text-align: center;
+        letter-spacing: 1px;
+
+        em {
+            color: #010101;
+        }
+    }
+}

@@ -7,26 +7,41 @@ import {
     Redirect
 } from "react-router-dom";
 import ContentWrap from "./components/ContentWrap";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div className="App">
                 <Router>
-                    <Route
-                        exact
-                        path="/kitchen/home"
-                        component={ContentWrap}
-                    ></Route>
-                    <Route component={ContentWrap} />
-                    <Redirect exact path="/" to="/kitchen/home"></Redirect>
-                    <Redirect
-                        exact
-                        path="/index.html"
-                        to="/kitchen/home"
-                    ></Redirect>
+                    <Switch>
+                        <Route
+                            exact
+                            path="/kitchen/home"
+                            component={ContentWrap}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/kitchen/login"
+                            component={Login}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/kitchen/register"
+                            component={Register}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/"
+                            render={() => <Redirect to="/kitchen/home" />}
+                        />
+                        <Route
+                            exact
+                            path="/index.html"
+                            render={() => <Redirect to="/kitchen/home" />}
+                        />
+                        <Route component={ContentWrap}></Route>
+                    </Switch>
                 </Router>
             </div>
         );

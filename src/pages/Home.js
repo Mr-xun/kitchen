@@ -1,6 +1,6 @@
 import React, { PureComponent as Component } from "react";
 import "../styles/home.scss";
-import { Carousel } from "antd-mobile";
+import { Carousel, Drawer, List } from "antd-mobile";
 import SearchInp from "../components/SearchInp";
 export default class Home extends Component {
     constructor() {
@@ -11,8 +11,13 @@ export default class Home extends Component {
                 "TekJlZRVCjLFexlOCuWn",
                 "IJOtIlfsYdTyaDTRVrLI"
             ],
-            imgHeight: 176
+            imgHeight: 176,
+            open: true
         };
+    }
+
+    componentDidMount() {
+        console.log(this);
     }
     render() {
         return (
@@ -44,47 +49,41 @@ export default class Home extends Component {
                 </div>
                 <div className="home-conent">
                     <div className="choose-type">
-                        <div className="type-box">
-                            <img
-                                src={require("../assets/images/type_1.png")}
-                                alt=""
-                            />
-                            <p>菜谱分类</p>
-                        </div>
-                        <div className="type-box">
-                            <img
-                                src={require("../assets/images/type_2.png")}
-                                alt=""
-                            />
-                            <p>西餐分类</p>
-                        </div>
-                        <div className="type-box">
-                            <img
-                                src={require("../assets/images/type_3.png")}
-                                alt=""
-                            />
-                            <p>厨房用具</p>
-                        </div>
-                        <div className="type-box">
-                            <img
-                                src={require("../assets/images/type_4.png")}
-                                alt=""
-                            />
-                            <p>中西厨房</p>
+                        <div className="choose-box">
+                            <div className="type-box">
+                                <img
+                                    src={require("../assets/images/type_1.png")}
+                                    alt=""
+                                />
+                                <p>菜谱分类</p>
+                            </div>
+                            <div className="type-box">
+                                <img
+                                    src={require("../assets/images/type_2.png")}
+                                    alt=""
+                                />
+                                <p>西餐分类</p>
+                            </div>
+                            <div className="type-box">
+                                <img
+                                    src={require("../assets/images/type_3.png")}
+                                    alt=""
+                                />
+                                <p>厨房用具</p>
+                            </div>
+                            <div className="type-box">
+                                <img
+                                    src={require("../assets/images/type_4.png")}
+                                    alt=""
+                                />
+                                <p>中西厨房</p>
+                            </div>
                         </div>
                     </div>
+
                     <div className="bot-content">
                         <div className="carousel-wrap">
-                            <Carousel
-                                autoplay={true}
-                                infinite
-                                beforeChange={(from, to) =>
-                                    console.log(`slide from ${from} to ${to}`)
-                                }
-                                afterChange={index =>
-                                    console.log("slide to", index)
-                                }
-                            >
+                            <Carousel autoplay={true} infinite>
                                 {this.state.data.map(val => (
                                     <a
                                         key={val}

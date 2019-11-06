@@ -1,17 +1,30 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import { List } from "antd-mobile";
 import "../styles/more.scss";
 const Item = List.Item;
-export default class More extends Component {
+const mapStateToProps = (state, props) => {
+    console.log(state);
+    return {
+        user_info: state.user_info
+    };
+};
+const mapDispatchToProps = (dispatch, props) => {
+    return {};
+};
+class MoreUI extends Component {
     constructor() {
         super();
-        this.state = {}
+        this.state = {};
+        this.goLogin = this.goLogin.bind(this);
+    }
+    goLogin() {
+        this.props.history.push("/kitchen/login");
     }
     render() {
-        return (
-            <div className="more-main">
-                <div className="more-title">更多</div>
-                <div className="top-info">
+        const TopInfo = ()=>(
+            <div className="top-info" onClick={this.goLogin}>
                     <div className="nolog-img">
                         <img
                             src={require("../assets/images/more_login.png")}
@@ -27,6 +40,11 @@ export default class More extends Component {
                         </p>
                     </div>
                 </div>
+        )
+        return (
+            <div className="more-main">
+                <div className="more-title">更多</div>
+                <TopInfo/>
                 <div className="list-cont">
                     <List>
                         <Item
@@ -63,3 +81,8 @@ export default class More extends Component {
         );
     }
 }
+const More = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MoreUI);
+export default More;

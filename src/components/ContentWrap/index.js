@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FootBar from "../FootBar";
 import "./index.scss";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "../../pages/Home";
 import Find from "../../pages/Find";
 import More from "../../pages/More";
@@ -18,35 +18,33 @@ export default class ConentWrap extends Component {
     render() {
         return (
             <div className="main-app">
-                <Router>
-                    <div className="main">
-                        <Switch>
-                            <Route
-                                exact
-                                path="/kitchen/home"
-                                component={Home}
-                            ></Route>
-                            <Route
-                                exact
-                                path="/kitchen/find"
-                                component={Find}
-                            ></Route>
-                            <Route
-                                exact
-                                path="/kitchen/kitchenStory"
-                                component={KitchenStory}
-                            ></Route>
-                            <Route
-                                exact
-                                path="/kitchen/more"
-                                component={More}
-                            ></Route>
-                        </Switch>
-                    </div>
-                    <div className="foot">
-                        <FootBar />
-                    </div>
-                </Router>
+                <div className="main">
+                    <Switch>
+                        <Route
+                            exact
+                            path="/kitchen/home"
+                            component={Home}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/kitchen/find"
+                            component={Find}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/kitchen/kitchenStory"
+                            component={KitchenStory}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/kitchen/more"
+                            component={More}
+                        ></Route>
+                    </Switch>
+                </div>
+                <div className="foot">
+                    <FootBar />
+                </div>
             </div>
         );
     }

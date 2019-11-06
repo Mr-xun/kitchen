@@ -10,9 +10,6 @@ class FootBar extends Component {
             fullScreen: false
         };
     }
-    componentDidMount() {
-        console.log(this);
-    }
     render() {
         return (
             <TabBar
