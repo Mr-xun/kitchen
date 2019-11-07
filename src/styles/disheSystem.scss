@@ -1,0 +1,146 @@
+.disheSystem-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .top-title {
+        height: 0.88rem;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        position: relative;
+        box-shadow: 0px 15px 10px -15px #ccc;
+
+        .back-btn {
+            z-index: 99;
+
+            img {
+                width: 22px;
+                height: 22px;
+            }
+        }
+
+
+        .title {
+            position: absolute;
+            font-size: 0.36rem;
+            text-align: center;
+            color: #000;
+            font-weight: 600;
+            height: 0.88rem;
+            line-height: 0.88rem;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+    }
+
+    .content {
+        flex: 1;
+        overflow: auto;
+
+        .dishe-box {
+            padding: 0 5px;
+            margin: 10px 0;
+
+            .img-box {
+                border-radius: 3px;
+                overflow: hidden;
+                width: 100%;
+                height: 4rem;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .control-box {
+                    position: absolute;
+                    bottom: 0;
+                    color: #fff;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    font-size: 0.20rem;
+                    height: 0.6rem;
+                    line-height: 0.6rem;
+                    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.7));
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+
+                    .like-box,
+                    .collect-box {
+                        display: flex;
+                        align-items: center;
+                        margin-right: 15px;
+
+                        img {
+                            width: 12px;
+                            height: 12px;
+                        }
+
+                        span {
+                            color: #fff;
+                            font-size: 0.2rem;
+                            margin-left: 5px;
+                        }
+                    }
+
+                    .collect-box {}
+                }
+            }
+
+            .dishe-info {
+                display: flex;
+                height: 1.6rem;
+
+                .explain {
+                    width: 80%;
+                    padding: 5px 0;
+
+                    h4 {
+                        font-size: 0.28rem;
+                        color: #000;
+                        line-height: 0.4rem;
+                        padding-left: 0.6rem;
+                        font-weight: 600;
+                    }
+
+                    p {
+                        text-indent: 0.48rem;
+                        font-size: 0.24rem;
+                        color: #000;
+                        line-height: 0.32rem;
+                        letter-spacing: 1px;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 3;
+                        overflow: hidden;
+                    }
+                }
+
+                .origin-user {
+                    width: 20%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    align-self: center;
+
+                    img {
+                        width: 0.6rem;
+                        height: 0.6rem;
+                        border-radius: 50%;
+                    }
+
+                    span {
+                        margin-top: 5px;
+                        font-size: 0.24rem;
+                        color: #777;
+                    }
+                }
+            }
+        }
+    }
+}

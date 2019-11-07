@@ -5,10 +5,14 @@ class FootBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: "blueTab",
-            hidden: false,
-            fullScreen: false
+            selectedTab: "/kitchen/home"
         };
+    }
+    componentWillMount() {
+        let currentPath = this.props.location.pathname;
+        this.setState({
+            selectedTab: currentPath
+        });
     }
     render() {
         return (
@@ -40,10 +44,10 @@ class FootBar extends Component {
                             alt=""
                         />
                     }
-                    selected={this.state.selectedTab === "blueTab"}
+                    selected={this.state.selectedTab === "/kitchen/home"}
                     onPress={() => {
                         this.setState({
-                            selectedTab: "blueTab"
+                            selectedTab: "/kitchen/home"
                         });
                         this.props.history.push("/kitchen/home");
                     }}
@@ -72,10 +76,10 @@ class FootBar extends Component {
                     }
                     title="奇趣发现"
                     key="find"
-                    selected={this.state.selectedTab === "redTab"}
+                    selected={this.state.selectedTab === "/kitchen/find"}
                     onPress={() => {
                         this.setState({
-                            selectedTab: "redTab"
+                            selectedTab: "/kitchen/find"
                         });
                         this.props.history.push("/kitchen/find");
                     }}
@@ -104,10 +108,12 @@ class FootBar extends Component {
                     }
                     title="厨房故事"
                     key="store"
-                    selected={this.state.selectedTab === "greenTab"}
+                    selected={
+                        this.state.selectedTab === "/kitchen/kitchenStory"
+                    }
                     onPress={() => {
                         this.setState({
-                            selectedTab: "greenTab"
+                            selectedTab: "/kitchen/kitchenStory"
                         });
                         this.props.history.push("/kitchen/kitchenStory");
                     }}
@@ -135,10 +141,10 @@ class FootBar extends Component {
                     }
                     title="更多"
                     key="more"
-                    selected={this.state.selectedTab === "yellowTab"}
+                    selected={this.state.selectedTab === "/kitchen/more"}
                     onPress={() => {
                         this.setState({
-                            selectedTab: "yellowTab"
+                            selectedTab: "/kitchen/more"
                         });
                         this.props.history.push("/kitchen/more");
                     }}

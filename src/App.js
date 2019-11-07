@@ -9,6 +9,8 @@ import {
 import ContentWrap from "./components/ContentWrap";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import DisheSystem from "./pages/DisheSystem";
+import DisheDetail from "./pages/DisheDetail";
 export default class App extends Component {
     render() {
         return (
@@ -29,6 +31,16 @@ export default class App extends Component {
                             exact
                             path="/kitchen/register"
                             component={Register}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/kitchen/disheSystem/:title"
+                            component={DisheSystem}
+                        ></Route>
+                        <Route
+                            exact
+                            path="/kitchen/disheDetail/:name"
+                            component={DisheDetail}
                         ></Route>
                         <Route
                             exact

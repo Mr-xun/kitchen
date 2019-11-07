@@ -1,0 +1,110 @@
+.top-info {
+    // height: 3.7rem;
+    box-sizing: border-box;
+
+    .have-info-content {
+        background: #f7f2f2;
+        margin-top: 2px;
+        display: block;
+
+        .have-info-box {
+            display: flex;
+            height: 1.8rem;
+            align-items: center;
+            padding: 0px 0.7rem 0;
+
+            .have-user-img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .have-rl-box {
+                margin-left: 20px;
+                text-align: left;
+
+                .have-user-name {
+                    font-size: 0.34rem;
+                    font-weight: 600;
+                    line-height: 32px;
+                }
+
+                .have-iser-tit {
+                    font-size: 0.28rem;
+                    color: #999;
+
+                    p {
+                        line-height: 20px;
+
+                        span {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .have-user-attent {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 0.02rem dotted #999;
+            border-bottom: 0.02rem solid #ccc;
+            padding-bottom: 10px;
+            padding-top: 10px;
+
+            .have-attent-box {
+                flex: 1;
+
+                h6 {
+                    font-size: 0.28rem;
+                    font-size: 600;
+                    line-height: 20px;
+                }
+
+                span {
+                    font-size: 0.28rem;
+
+                    line-height: 20px;
+                }
+            }
+
+            .have-attent-box:nth-of-type(2) {
+                border-right: 0.02rem dotted #999;
+                border-left: 0.02rem dotted #999;
+
+            }
+        }
+    }
+
+    .have-card {
+        display: flex;
+        justify-content: space-between;
+        height: 1.2rem;
+        align-items: flex-end;
+
+        .have-card-box {
+            flex: 1;
+
+            h6 {
+                font-size: 0.28rem;
+                font-size: 600;
+                line-height: 20px;
+            }
+
+            span {
+                font-size: 0.28rem;
+
+                line-height: 20px;
+            }
+        }
+    }
+
+}

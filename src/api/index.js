@@ -19,5 +19,21 @@ export default {
     loginAccount(params) {
         //用户登录
         return request.post(ORIGIN_PATH + "/user/login", params);
+    },
+    outLoginAccount(params) {
+        //用户退出登录
+        return request.post(ORIGIN_PATH + "/user/logout", params);
+    },
+    getUserInfo(params) {
+        //获取用户信息
+        return request.post(ORIGIN_PATH + "/user/getInfo", params);
+    },
+    getStoryPictureList() {
+        //获取厨房故事列表
+        return request.get(ORIGIN_PATH + "/picture/getPictureList");
+    },
+    getStoryPictureLook(params) {
+        //查看厨房故事单个图片详情
+        return request.get(ORIGIN_PATH + "/picture/file", params);
     }
 };

@@ -15,9 +15,8 @@ export default class Home extends Component {
             open: true
         };
     }
-
-    componentDidMount() {
-        console.log(this);
+    goDetailsPage(name) {
+        this.props.history.push({ pathname: "/kitchen/disheDetail/" + name });
     }
     render() {
         return (
@@ -118,7 +117,12 @@ export default class Home extends Component {
                         </div>
                         <div className="day-recommend">
                             <h4>每日推荐</h4>
-                            <div className="day-box">
+                            <div
+                                className="day-box"
+                                onClick={() => {
+                                    this.goDetailsPage("宫保鸡丁");
+                                }}
+                            >
                                 <img
                                     src={require("../assets/images/dish_one.jpg")}
                                     alt=""
@@ -149,7 +153,12 @@ export default class Home extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="day-box">
+                            <div
+                                className="day-box"
+                                onClick={() => {
+                                    this.goDetailsPage("宫保鸡丁");
+                                }}
+                            >
                                 <img
                                     src={require("../assets/images/dish_one.jpg")}
                                     alt=""

@@ -1,17 +1,37 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { List } from "antd-mobile";
+import { List, Button, Toast } from "antd-mobile";
 import "../styles/more.scss";
+import HaveInfo from "../components/More/HaveInfo";
+import NoInfo from "../components/More/NoInfo";
+import api from "../api";
+
 const Item = List.Item;
 const mapStateToProps = (state, props) => {
-    console.log(state);
     return {
         user_info: state.user_info
     };
 };
 const mapDispatchToProps = (dispatch, props) => {
-    return {};
+    return {
+        outLogin: () => {
+            api.outLoginAccount()
+                .then(res => {
+                    let { code, msg, data } = res.data;
+                    if (code === 0) {
+                        dispatch({
+                            type: "USER_INFO",
+                            payload: {}
+                        });
+                    } else {
+                        Toast.info(msg, 1);
+                    }
+                })
+                .catch(err => {
+                    Toast.info("服务器异常", 1);
+                });
+        }
+    };
 };
 class MoreUI extends Component {
     constructor() {
@@ -22,29 +42,27 @@ class MoreUI extends Component {
     goLogin() {
         this.props.history.push("/kitchen/login");
     }
+
     render() {
-        const TopInfo = ()=>(
-            <div className="top-info" onClick={this.goLogin}>
-                    <div className="nolog-img">
-                        <img
-                            src={require("../assets/images/more_login.png")}
-                            alt=""
-                        />
-                    </div>
-                    <div className="login-txt">
-                        <h5>登录 / 注册账号</h5>
-                        <p>
-                            解锁收藏、云端同步功能
-                            <br />
-                            收藏内容不丢失
-                        </p>
-                    </div>
-                </div>
-        )
+        const { user_info } = this.props;
+        let TopInfo = user_info.account ? (
+            <HaveInfo userInfo={user_info} />
+        ) : (
+            <NoInfo />
+        );
+        let OutLogin = () => (
+            <div className="outLogin-btn">
+                <Button type="warning" onClick={this.props.outLogin}>
+                    退出登录
+                </Button>
+            </div>
+        );
+        let OutBtn = user_info.account ? <OutLogin /> : null;
+
         return (
             <div className="more-main">
                 <div className="more-title">更多</div>
-                <TopInfo/>
+                {TopInfo}
                 <div className="list-cont">
                     <List>
                         <Item
@@ -77,6 +95,7 @@ class MoreUI extends Component {
                         </Item>
                     </List>
                 </div>
+                {OutBtn}
             </div>
         );
     }

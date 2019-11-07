@@ -1,0 +1,39 @@
+.top-info {
+    // height: 3.7rem;
+    box-sizing: border-box;
+
+    .nolog-img {
+        width: 2.2rem;
+        height: 2.2rem;
+        margin: 0.4rem auto;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border: 0.02rem solid #999;
+        background: #f3f3f3;
+
+        img {
+            width: 70%;
+            height: 70%;
+        }
+    }
+
+    .login-txt {
+        margin-top: 15px;
+        color: #4e4e4e;
+
+        h5 {
+            font-size: 0.36rem;
+
+        }
+
+        p {
+            margin-top: 8px;
+            line-height: 0.36rem;
+            letter-spacing: 3px;
+            font-size: 0.24rem;
+        }
+    }
+}

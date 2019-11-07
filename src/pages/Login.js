@@ -27,7 +27,6 @@ const mapDispatchToProps = (dispatch, props) => {
                             Toast.info(msg, 1);
                         }
                     });
-                   
                 } else {
                     Toast.info("请输入完整所需信息", 1);
                 }
