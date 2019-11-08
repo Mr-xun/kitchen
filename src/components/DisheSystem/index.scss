@@ -1,0 +1,111 @@
+.content {
+    flex: 1;
+    overflow: auto;
+
+    .dishe-box {
+        padding: 0 10px;
+        margin-bottom: 20px;
+
+        .img-box {
+            border-radius: 3px;
+            overflow: hidden;
+            width: 100%;
+            height: 4.5rem;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .control-box {
+                position: absolute;
+                bottom: 0;
+                color: #fff;
+                left: 0;
+                right: 0;
+                margin: auto;
+                font-size: 0.20rem;
+                height: 0.8rem;
+                line-height: 0.8rem;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(56, 54, 54, 0.83));
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                .like-box,
+                .collect-box {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 15px;
+
+                    img {
+                        width: 12px;
+                        height: 12px;
+                    }
+
+                    span {
+                        color: #fff;
+                        font-size: 0.24rem;
+                        margin-left: 5px;
+                    }
+                }
+
+            }
+        }
+
+        .dishe-info {
+            display: flex;
+            height: 1.6rem;
+
+            .explain {
+                width: 80%;
+                padding: 5px 0;
+
+                h4 {
+                    font-size: 0.28rem;
+                    color: #000;
+                    line-height: 0.4rem;
+                    padding-left: 0.6rem;
+                    font-weight: 600;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                p {
+                    text-indent: 0.48rem;
+                    font-size: 0.26rem;
+                    margin-top: 5px;
+                    color: #000;
+                    line-height: 0.34rem;
+                    letter-spacing: 1px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                }
+            }
+
+            .origin-user {
+                width: 20%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                align-self: center;
+
+                img {
+                    width: 0.6rem;
+                    height: 0.6rem;
+                    border-radius: 50%;
+                }
+
+                span {
+                    margin-top: 5px;
+                    font-size: 0.24rem;
+                    color: #777;
+                }
+            }
+        }
+    }
+}

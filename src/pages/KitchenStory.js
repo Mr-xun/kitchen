@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Toast } from "antd-mobile";
+
 import "../styles/kitchenStory.scss";
 import "../api";
 import api from "../api";
@@ -13,7 +15,8 @@ export default class KitChenStory extends Component {
         });
     }
     goDetailsPage(name) {
-        this.props.history.push({ pathname: "/kitchen/disheDetail/" + name });
+        Toast.info("该链接暂未开放", 0.5);
+        // this.props.history.push({ pathname: "/kitchen/disheDetail/" + name });
     }
     render() {
         return (
