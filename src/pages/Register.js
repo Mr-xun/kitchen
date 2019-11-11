@@ -22,6 +22,7 @@ class Register extends Component {
                     btnLoading: true
                 });
                 let params = this.props.form.getFieldsValue();
+                params.gender = params.gender === "男" ? true : false;
                 api.registerAccount(params).then(res => {
                     let { code, msg } = res.data;
                     if (code === 0) {
@@ -151,7 +152,7 @@ class Register extends Component {
                                     ]
                                 })}
                                 error={!!getFieldError("gender")}
-                                placeholder="请输入性别"
+                                placeholder="请输入性别（男或女）"
                             >
                                 <img
                                     style={{

@@ -1,29 +1,51 @@
 import React, { Component } from "react";
+import { Toast } from "antd-mobile";
 import disheData from "../../../assets/js/disheDetailsData";
 import "./index.scss";
+import api from "../../../api";
 export default class ShowDetail extends Component {
     constructor() {
         super();
         this.state = {
-            data: {}
+            serveData: {}
         };
     }
+    getDetails = () => {
+        let params = {
+            foodId: 1
+        };
+        api.getStoryPictureLook(params).then(res => {
+            let { code, data, msg } = res.data;
+            if (code === 0) {
+                this.setState({
+                    serveData: data
+                });
+            }
+        });
+    };
     render() {
-        let detailData = disheData[this.props.name].list[0];
+        let detailData = { materialList: [], stepList: [] };
+        if (this.props.serveData.foodName) {
+            detailData = this.props.serveData;
+        } else {
+            detailData = disheData[this.props.name].list[0];
+        }
         return (
             <div className="content">
                 <div className="dishe-master-img">
                     <img src={detailData.imageid} alt="" />
                 </div>
-                <h3 className="dishe-name">{detailData.name}</h3>
-                <p className="collect-info">
+                <h3 className="dishe-name">
+                    {detailData.name || detailData.foodName}
+                </h3>
+                {/* <p className="collect-info">
                     已有{22}人点赞<span>11人收藏</span>
                 </p>
                 <p className="origin-info">
                     {detailData.authorname}
                     <br />
                     来自网上厨房
-                </p>
+                </p> */}
                 <div className="dishe-explain">
                     <p className="symbol">“</p>
                     <p className="explain-cont">{detailData.description}</p>
@@ -61,7 +83,7 @@ export default class ShowDetail extends Component {
                     })}
                     {detailData.tipList.map((tipItem, index) => {
                         return (
-                            <div className="tip-content">
+                            <div className="tip-content" key={index}>
                                 <h4>
                                     <span>一</span>小贴士<span>一</span>
                                 </h4>

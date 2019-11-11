@@ -17,7 +17,7 @@ export default class Find extends Component {
     handleClick = () => {
         this.manualFocusInst.focus();
     };
-    goPage(type) {
+    goPage = type => {
         if (type === "早餐" || type === "宝宝辅食") {
             this.props.history.push({
                 pathname: "/kitchen/disheSystem/" + type
@@ -25,11 +25,11 @@ export default class Find extends Component {
         } else {
             Toast.info("该链接暂未开放");
         }
-    }
+    };
     render() {
         return (
             <div className="find-main">
-                <div className="top-ipt">
+                <div className="search-ipt">
                     <SearchBar
                         value={this.state.value}
                         placeholder="搜索菜谱"
@@ -43,7 +43,7 @@ export default class Find extends Component {
                     />
                 </div>
                 <div className="bot-warp">
-                    {findData.list.map((mainList, index) => {
+                    {findData.map((mainList, index) => {
                         return (
                             <div className="class-box" key={index}>
                                 <h2 className="class-title">{mainList.name}</h2>

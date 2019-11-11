@@ -1,0 +1,28 @@
+.top-ipt {
+    height: 0.88rem;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+
+    .lt-icon,
+    .rt-men {
+        width: 0.76rem;
+    }
+
+    .cen-searh {
+        flex: 1;
+
+        .am-search {
+            background: #fff;
+
+            .am-search-input {
+                background: #efeff4;
+                border-radius: 0.4rem;
+            }
+
+            .am-search-cancel {
+                display: none;
+            }
+        }
+    }
+}

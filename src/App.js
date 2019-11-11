@@ -39,7 +39,7 @@ export default class App extends Component {
                         ></Route>
                         <Route
                             exact
-                            path="/kitchen/disheDetail/:name"
+                            path="/kitchen/disheDetail/:name/:foodId"
                             component={DisheDetail}
                         ></Route>
                         <Route

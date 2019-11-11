@@ -9,27 +9,10 @@ const mapStateToProps = (state, props) => {
 };
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        login: () => {
-            props.form.validateFields({ force: true }, error => {
-                if (!error) {
-                    let params = props.form.getFieldsValue();
-                    api.loginAccount(params).then(res => {
-                        let { code, data, msg } = res.data;
-                        if (code === 0) {
-                            Toast.info("登录成功", 1, () => {
-                                dispatch({
-                                    type: "USER_INFO",
-                                    payload: data
-                                });
-                                props.history.push("/kitchen/more");
-                            });
-                        } else {
-                            Toast.info(msg, 1);
-                        }
-                    });
-                } else {
-                    Toast.info("请输入完整所需信息", 1);
-                }
+        saveUser: data => {
+            dispatch({
+                type: "USER_INFO",
+                payload: data
             });
         }
     };
@@ -40,16 +23,39 @@ class LoginUI extends Component {
         this.state = {
             btnLoading: false
         };
-        this.goMorePage = this.goMorePage.bind(this);
-        this.goRegisterPage = this.goRegisterPage.bind(this);
     }
-    goMorePage() {
+    goMorePage = () => {
         this.props.history.push("/kitchen/more");
-    }
-    goRegisterPage() {
+    };
+    goRegisterPage = () => {
         this.props.history.push("/kitchen/register");
-    }
-
+    };
+    login = () => {
+        this.props.form.validateFields({ force: true }, error => {
+            if (!error) {
+                this.setState({
+                    btnLoading: true
+                });
+                let params = this.props.form.getFieldsValue();
+                api.loginAccount(params).then(res => {
+                    let { code, data, msg } = res.data;
+                    if (code === 0) {
+                        Toast.info("登录成功", 1, () => {
+                            this.props.saveUser(data);
+                            this.props.history.push("/kitchen/more");
+                        });
+                    } else {
+                        Toast.info(msg, 1);
+                    }
+                    this.setState({
+                        btnLoading: false
+                    });
+                });
+            } else {
+                Toast.info("请输入完整所需信息", 1);
+            }
+        });
+    };
     render() {
         const { getFieldProps, getFieldError } = this.props.form;
         let { btnLoading } = this.state;
@@ -113,7 +119,7 @@ class LoginUI extends Component {
                                 type="warning"
                                 disabled={btnLoading}
                                 loading={btnLoading}
-                                onClick={this.props.login}
+                                onClick={this.login}
                             >
                                 登录
                             </Button>

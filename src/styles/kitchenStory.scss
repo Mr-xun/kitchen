@@ -40,15 +40,40 @@
         }
 
         .from-info {
-            font-size: 0.26rem;
-            color: #999;
-            text-align: left;
-            line-height: 0.4rem;
-            padding-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-            span {
-                margin-left: 10px;
+            .origin {
+                font-size: 0.26rem;
+                color: #999;
+                text-align: left;
+                line-height: 0.4rem;
+                padding-left: 15px;
+                margin-top: 5px;
+
+                span {
+                    margin-left: 10px;
+                }
             }
+
+            .give-like {
+                display: flex;
+                align-items: center;
+                margin-right: 15px;
+
+                img {
+                    width: 12px;
+                    height: 12px;
+                }
+
+                span {
+                    color: #131212;
+                    font-size: 0.24rem;
+                    margin-left: 5px;
+                }
+            }
+
         }
     }
 }

@@ -1,6 +1,6 @@
 import request from "./http";
 const ORIGIN_PATH = "http://62.234.138.175:8080/kitchen"; //远端
-const LOCAL_PATH = "http://192.168.13.240:8080/kitchen"; //本地
+// const LOCAL_PATH = "http://192.168.13.240:8080/kitchen"; //本地
 // let _CURRENT_PATH_ = (function() {
 //     //选择接口
 //     let currentHost = window.location.host;
@@ -30,10 +30,19 @@ export default {
     },
     getStoryPictureList() {
         //获取厨房故事列表
-        return request.get(ORIGIN_PATH + "/picture/getPictureList");
+        return request.get(ORIGIN_PATH + "/food/getFoodList");
     },
     getStoryPictureLook(params) {
-        //查看厨房故事单个图片详情
-        return request.get(ORIGIN_PATH + "/picture/file", params);
+        //查看厨房故事单个详情
+        return request.post(ORIGIN_PATH + "/food/getFoodDetail", params);
+    },
+    giveLike(params) {
+        //点赞
+        return request.post(ORIGIN_PATH + "/food/praiseFoodInfo", params);
+    },
+    lookDisheDetails(id) {
+        return request.get(
+            `http://120.55.28.235/public/getRecipeListByIds.shtml?ids=263893360`
+        );
     }
 };

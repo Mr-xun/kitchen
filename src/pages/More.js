@@ -14,35 +14,32 @@ const mapStateToProps = (state, props) => {
 };
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        outLogin: () => {
-            api.outLoginAccount()
-                .then(res => {
-                    let { code, msg, data } = res.data;
-                    if (code === 0) {
-                        dispatch({
-                            type: "USER_INFO",
-                            payload: {}
-                        });
-                    } else {
-                        Toast.info(msg, 1);
-                    }
-                })
-                .catch(err => {
-                    Toast.info("服务器异常", 1);
-                });
+        removeUser: () => {
+            dispatch({
+                type: "USER_INFO",
+                payload: {}
+            });
         }
     };
 };
 class MoreUI extends Component {
-    constructor() {
-        super();
-        this.state = {};
-        this.goLogin = this.goLogin.bind(this);
-    }
-    goLogin() {
+    goLogin = () => {
         this.props.history.push("/kitchen/login");
-    }
-
+    };
+    outLogin = () => {
+        api.outLoginAccount()
+            .then(res => {
+                let { code, msg } = res.data;
+                if (code === 0) {
+                    this.props.removeUser();
+                } else {
+                    Toast.info(msg, 1);
+                }
+            })
+            .catch(err => {
+                Toast.info("服务器异常", 1);
+            });
+    };
     render() {
         const { user_info } = this.props;
         let TopInfo = user_info.account ? (
@@ -52,7 +49,7 @@ class MoreUI extends Component {
         );
         let OutLogin = () => (
             <div className="outLogin-btn">
-                <Button type="warning" onClick={this.props.outLogin}>
+                <Button type="warning" onClick={this.outLogin}>
                     退出登录
                 </Button>
             </div>

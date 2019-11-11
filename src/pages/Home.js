@@ -1,39 +1,34 @@
 import React, { PureComponent as Component } from "react";
 import "../styles/home.scss";
 import { Drawer, List, Toast } from "antd-mobile";
-import SearchInp from "../components/SearchInp";
+import TopIpt from "../components/Home/TopIpt";
 import CarouselWrap from "../components/Home/CarouselWrap";
 import DailySpecial from "../components/Home/DailySpecial";
+import ChooseType from "../components/Home/ChooseType";
 export default class Home extends Component {
     constructor() {
         super();
         this.state = {
-            data: [
-                "AiyWuByWklrrUDlFignR",
-                "TekJlZRVCjLFexlOCuWn",
-                "IJOtIlfsYdTyaDTRVrLI"
-            ],
             disheClassify: {
-                ["菜谱分类"]: ["家常菜谱", "热门菜谱", "最新菜谱", "视频菜谱"],
-                ["西餐分类"]: [
+                菜谱分类: ["家常菜谱", "热门菜谱", "最新菜谱", "视频菜谱"],
+                西餐分类: [
                     "法式菜肴",
                     "英式菜肴",
                     "意式菜肴",
                     "美式菜肴",
                     "俄式菜肴"
                 ],
-                ["厨房用具"]: [
+                厨房用具: [
                     "储藏用具",
                     "洗涤用具",
                     "调理用具",
                     "烹调用具",
                     "进餐用具"
                 ],
-                ["中西厨房"]: ["厨房刀具", "厨房炉灶", "中西厨设备"]
+                中西厨房: ["厨房刀具", "厨房炉灶", "中西厨设备"]
             },
             currentClassify: [],
             chooseClassify: "",
-            imgHeight: 176,
             open: false
         };
     }
@@ -41,13 +36,19 @@ export default class Home extends Component {
         this.props.history.push({ pathname: "/kitchen/disheDetail/" + name });
     };
     goSystemPage = type => {
-        if (type === "家常菜谱") {
+        if (type === "家常菜谱")
             this.props.history.push({
                 pathname: "/kitchen/disheSystem/" + type.slice(0, 3)
             });
-        } else {
-            Toast.info("该链接暂未开放", 0.5);
-        }
+        else if (type === "热门菜谱")
+            this.props.history.push({
+                pathname: "/kitchen/disheSystem/周最热"
+            });
+        else if (type === "最新菜谱")
+            this.props.history.push({
+                pathname: "/kitchen/disheSystem/新鲜菜"
+            });
+        else Toast.info("该链接暂未开放", 0.5);
     };
     onOpenChange = type => {
         let { disheClassify, chooseClassify } = this.state;
@@ -84,7 +85,6 @@ export default class Home extends Component {
                     return (
                         <List.Item
                             key={index}
-                            thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
                             multipleLine
                             onClick={() => {
                                 this.goSystemPage(item);
@@ -98,85 +98,9 @@ export default class Home extends Component {
         );
         return (
             <div className="home-main">
-                <div className="top-ipt">
-                    <div className="lt-icon">
-                        <img
-                            style={{
-                                width: "22px",
-                                height: "22px"
-                            }}
-                            src={require("../assets/images/home.png")}
-                            alt=""
-                        />
-                    </div>
-                    <div className="cen-searh">
-                        <SearchInp />
-                    </div>
-                    <div className="rt-men">
-                        <img
-                            style={{
-                                width: "22px",
-                                height: "22px"
-                            }}
-                            src={require("../assets/images/kefu.png")}
-                            alt=""
-                        />
-                    </div>
-                </div>
+                <TopIpt />
                 <div className="home-conent">
-                    <div className="choose-type">
-                        <div className="choose-box">
-                            <div
-                                className="type-box"
-                                onClick={() => {
-                                    this.onOpenChange("菜谱分类");
-                                }}
-                            >
-                                <img
-                                    src={require("../assets/images/type_1.png")}
-                                    alt=""
-                                />
-                                <p>菜谱分类</p>
-                            </div>
-                            <div
-                                className="type-box"
-                                onClick={() => {
-                                    this.onOpenChange("西餐分类");
-                                }}
-                            >
-                                <img
-                                    src={require("../assets/images/type_2.png")}
-                                    alt=""
-                                />
-                                <p>西餐分类</p>
-                            </div>
-                            <div
-                                className="type-box"
-                                onClick={() => {
-                                    this.onOpenChange("厨房用具");
-                                }}
-                            >
-                                <img
-                                    src={require("../assets/images/type_3.png")}
-                                    alt=""
-                                />
-                                <p>厨房用具</p>
-                            </div>
-                            <div
-                                className="type-box"
-                                onClick={() => {
-                                    this.onOpenChange("中西厨房");
-                                }}
-                            >
-                                <img
-                                    src={require("../assets/images/type_4.png")}
-                                    alt=""
-                                />
-                                <p>中西厨房</p>
-                            </div>
-                        </div>
-                    </div>
-
+                    <ChooseType onOpenChange={this.onOpenChange}></ChooseType>
                     <div className="bot-content">
                         <Drawer
                             className="my-drawer"

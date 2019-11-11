@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { TabBar } from "antd-mobile";
 import { withRouter } from "react-router-dom";
 class FootBar extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             selectedTab: "/kitchen/home"
         };

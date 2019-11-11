@@ -1,26 +1,49 @@
 //菜系页面
 import React, { Component } from "react";
 import ShowDetail from "../components/DisheDetail/ShowDetail";
+import api from "../api";
+
 import "../styles/disheDetail.scss";
 export default class DisheDetail extends Component {
     constructor() {
         super();
         this.state = {
-            currenName: ""
+            currenName: "",
+            foodId: null,
+            serveData: {}
         };
         this.goBack = this.goBack.bind(this);
     }
     goBack() {
         this.props.history.go(-1);
     }
+    getDetails = id => {
+        let params = {
+            foodId: id
+        };
+        api.getStoryPictureLook(params).then(res => {
+            let { code, data, msg } = res.data;
+            if (code == 0) {
+                data.tipList = [data.tip];
+                this.setState({
+                    serveData: data
+                });
+            }
+        });
+    };
     componentWillMount() {
         let name = this.props.match.params.name;
+        let foodId = this.props.match.params.foodId;
+        if (foodId) {
+            this.getDetails(foodId);
+        }
         this.setState({
-            currenName: name
+            currenName: name,
+            foodId: foodId
         });
     }
     render() {
-        let { currenName } = this.state;
+        let { currenName, serveData } = this.state;
         return (
             <div className="disheDetail-main">
                 <div className="top-title">
@@ -36,13 +59,14 @@ export default class DisheDetail extends Component {
                             src={require("../assets/images/shoucang_1.png")}
                             alt=""
                         />
-                        <img className='lanzi'
+                        <img
+                            className="lanzi"
                             src={require("../assets/images/lanzi.png")}
                             alt=""
                         />
                     </div>
                 </div>
-                <ShowDetail name={currenName} />
+                <ShowDetail name={currenName} serveData={serveData} />
             </div>
         );
     }

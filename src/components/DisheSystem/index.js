@@ -13,8 +13,12 @@ class DisheSystemWrap extends Component {
         let { title } = this.props;
         if (title === "早餐") {
             this.props.history.push({
-                pathname: "/kitchen/disheDetail/" + name
+                pathname: `/kitchen/disheDetail/${name}/null`
             });
+            // this.props.history.push({
+            //     path: `/kitchen/disheDetail`,
+            //     query: { name: name, id: id }
+            // });
         } else {
             Toast.info("该链接暂未开放", 0.5);
         }
@@ -29,7 +33,10 @@ class DisheSystemWrap extends Component {
                             key={index}
                             className="dishe-box"
                             onClick={() => {
-                                this.goDetailsPage(`${item.name}`);
+                                this.goDetailsPage(
+                                    `${item.name}`,
+                                    `${item.id}`
+                                );
                             }}
                         >
                             <div className="img-box">

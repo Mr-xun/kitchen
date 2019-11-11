@@ -1,0 +1,25 @@
+.choose-type {
+    height: 1.1rem;
+    margin-top: 5px;
+
+    .choose-box {
+        padding: 0 15px;
+
+        display: flex;
+        justify-content: space-between;
+
+
+        .type-box {
+            width: 1.5rem;
+            cursor: pointer;
+
+            p {
+                font-size: 0.24rem;
+                padding: 5px 0;
+            }
+        }
+    }
+
+
+
+}
