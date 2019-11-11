@@ -32,9 +32,6 @@ export default class Home extends Component {
             open: false
         };
     }
-    goDetailsPage = name => {
-        this.props.history.push({ pathname: "/kitchen/disheDetail/" + name });
-    };
     goSystemPage = type => {
         if (type === "家常菜谱")
             this.props.history.push({

@@ -8,7 +8,9 @@ class DailySpecial extends Component {
         this.state = {};
     }
     goDetailsPage = name => {
-        this.props.history.push({ pathname: "/kitchen/disheDetail/" + name });
+        this.props.history.push({
+            pathname: `/kitchen/disheDetail/${name}/null`
+        });
     };
     render() {
         return (
