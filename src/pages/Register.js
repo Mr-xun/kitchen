@@ -121,6 +121,7 @@ class Register extends Component {
                                 />
                             </InputItem>
                             <InputItem
+                                type="number" 
                                 {...getFieldProps("phone", {
                                     rules: [
                                         {

@@ -7,7 +7,6 @@ export default class HaveInfo extends Component {
     }
     render() {
         let { userInfo } = this.props;
-        console.log(this.props);
         return (
             <div className="top-info">
                 <div className="have-info-content">
