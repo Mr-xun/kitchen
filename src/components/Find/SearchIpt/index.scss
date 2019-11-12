@@ -1,0 +1,17 @@
+.search-ipt {
+    height: 0.88rem;
+    padding: 0 8px;
+
+    .am-search {
+        background: #fff;
+
+        .am-search-input {
+            background: #efeff4;
+            border-radius: 0.4rem;
+        }
+
+        .am-search-cancel {
+            display: none;
+        }
+    }
+}

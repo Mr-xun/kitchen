@@ -1,17 +1,14 @@
 //菜系页面
 import React, { Component } from "react";
 import "../styles/disheSystem.scss";
-import DisheSystemWrap from "../components/DisheSystem";
+import TopBack from "../components/DisheSystem/TopBack";
+import DisheSystemWrap from "../components/DisheSystem/Content";
 export default class DisheSystem extends Component {
     constructor() {
         super();
         this.state = {
             currenTitle: ""
         };
-        this.goBack = this.goBack.bind(this);
-    }
-    goBack() {
-        this.props.history.go(-1);
     }
 
     componentWillMount() {
@@ -24,15 +21,7 @@ export default class DisheSystem extends Component {
         let { currenTitle } = this.state;
         return (
             <div className="disheSystem-main">
-                <div className="top-title">
-                    <div className="back-btn" onClick={this.goBack}>
-                        <img
-                            src={require("../assets/images/fanhui.png")}
-                            alt=""
-                        />
-                    </div>
-                    <h3 className="title">{currenTitle}</h3>
-                </div>
+                <TopBack title={currenTitle} />
                 <DisheSystemWrap title={currenTitle} />
             </div>
         );

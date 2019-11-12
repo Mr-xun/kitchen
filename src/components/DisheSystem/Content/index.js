@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Toast } from "antd-mobile";
 
-import { disheSystemData } from "../../assets/js/disheSystemData";
+import { disheSystemData } from "../../../assets/js/disheSystemData";
 import "./index.scss";
 import { withRouter } from "react-router-dom";
 class DisheSystemWrap extends Component {
@@ -44,14 +44,14 @@ class DisheSystemWrap extends Component {
                                 <div className="control-box">
                                     <div className="like-box">
                                         <img
-                                            src={require("../../assets/images/white_dianzan.png")}
+                                            src={require("../../../assets/images/white_dianzan.png")}
                                             alt=""
                                         />
                                         <span>{item.infos.likeCount}</span>
                                     </div>
                                     <div className="collect-box">
                                         <img
-                                            src={require("../../assets/images/white_shoucang.png")}
+                                            src={require("../../../assets/images/white_shoucang.png")}
                                             alt=""
                                         />
                                         <span>

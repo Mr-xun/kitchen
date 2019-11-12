@@ -26,7 +26,7 @@ class Register extends Component {
                 api.registerAccount(params).then(res => {
                     let { code, msg } = res.data;
                     if (code === 0) {
-                        Toast.info("注册成功，将前往登录", 1, () => {
+                        Toast.info("注册成功，将前往登录", 0.5, () => {
                             this.props.history.push("/kitchen/login");
                         });
                     } else {

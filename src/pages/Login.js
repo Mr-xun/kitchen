@@ -40,7 +40,7 @@ class LoginUI extends Component {
                 api.loginAccount(params).then(res => {
                     let { code, data, msg } = res.data;
                     if (code === 0) {
-                        Toast.info("登录成功", 1, () => {
+                        Toast.info("登录成功", 0.5, () => {
                             this.props.saveUser(data);
                             this.props.history.push("/kitchen/more");
                         });

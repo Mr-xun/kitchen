@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Toast } from "antd-mobile";
 import disheData from "../../../assets/js/disheDetailsData";
 import "./index.scss";
-import api from "../../../api";
 export default class ShowDetail extends Component {
     constructor() {
         super();
@@ -10,19 +8,6 @@ export default class ShowDetail extends Component {
             serveData: {}
         };
     }
-    getDetails = () => {
-        let params = {
-            foodId: 1
-        };
-        api.getStoryPictureLook(params).then(res => {
-            let { code, data, msg } = res.data;
-            if (code === 0) {
-                this.setState({
-                    serveData: data
-                });
-            }
-        });
-    };
     render() {
         let detailData = { materialList: [], stepList: [] };
         if (this.props.serveData.foodName) {
