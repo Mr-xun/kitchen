@@ -2,16 +2,12 @@
     height: 0.88rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    box-shadow: 0px 15px 10px -15px #ccc;
+    padding-left: 10px;
     position: relative;
+    box-shadow: 0px 15px 10px -15px #ccc;
 
     .back-btn {
         z-index: 99;
-        height: 0.88rem;
-        display: flex;
-        align-items: center;
 
         img {
             width: 22px;
@@ -21,25 +17,23 @@
 
 
     .title {
+        position: absolute;
         font-size: 0.36rem;
         text-align: center;
         color: #000;
         height: 0.88rem;
         line-height: 0.88rem;
-        margin: 0 auto;
-        position: absolute;
         left: 0;
         right: 0;
+        margin: 0 auto;
     }
 
     .control {
-        display: flex;
-        align-items: center;
+        z-index: 99;
 
-        img {
-            width: 18px;
-            height: 18px;
-            margin-left: 10px;
+        span {
+            color: #fc9023;
+            font-size: 0.34rem;
         }
     }
 }

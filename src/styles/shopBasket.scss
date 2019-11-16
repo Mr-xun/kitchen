@@ -1,0 +1,14 @@
+.shopBasket-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .shopBasket-content {
+        flex: 1;
+        overflow: auto;
+        padding: 0 15px;
+        margin-top: 0.1rem;
+
+    }
+
+}

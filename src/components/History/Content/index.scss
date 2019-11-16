@@ -1,0 +1,41 @@
+.history-content {
+    flex: 1;
+    padding: 0 10px;
+
+    .history-box {
+        display: flex;
+        margin: 0.2rem 0 0.5rem 0;
+
+        .lt-img {
+            img {
+                width: 1.5rem;
+                height: 1.5rem;
+                border-radius: 0.25rem;
+            }
+        }
+
+        .rt-info {
+            margin-left: 0.2rem;
+            text-align: left;
+
+            .dishe-name {
+                color: #000;
+                font-size: 0.28rem;
+                margin-top: 0.08rem;
+                padding: 0.3rem 0;
+            }
+
+            .author-name {
+                color: #999;
+                font-size: 0.24rem;
+                line-height: 0.28rem;
+            }
+
+            .origin {
+                color: #999;
+                line-height: 0.28rem;
+                font-size: 0.24rem;
+            }
+        }
+    }
+}

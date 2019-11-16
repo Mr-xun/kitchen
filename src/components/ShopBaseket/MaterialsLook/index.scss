@@ -1,0 +1,36 @@
+.materials-content {
+    .materials-box {
+        text-align: left;
+        margin-top: 0.8rem;
+        padding-bottom: 0.3rem;
+
+        .materials-title {
+            font-size: 0.32rem;
+            font-weight: 600;
+            color: #000;
+            margin: 0.6rem 0;
+            padding: 0 8px;
+
+        }
+
+        .materials-list {
+            li {
+                margin-top: 0.25rem;
+                height: 0.9rem;
+                display: flex;
+                font-size: 0.3rem;
+                line-height: 0.9rem;
+                color: #333131;
+                padding: 0 8px;
+                background: #f2f2f2;
+                width: 100%;
+                justify-content: space-between;
+
+                span {
+                    margin-left: 5px;
+                }
+            }
+
+        }
+    }
+}
