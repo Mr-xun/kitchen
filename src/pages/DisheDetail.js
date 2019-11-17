@@ -15,6 +15,7 @@ export default class DisheDetail extends Component {
             serveData: {}
         };
     }
+    
     getDetails = id => {
         let params = {
             foodId: id

@@ -1,9 +1,19 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+
 import { Toast, ActivityIndicator } from "antd-mobile";
 import { withRouter } from "react-router-dom";
 import api from "../../api";
 import "./index.scss";
-class Content extends Component {
+const mapStateToProps = (state, props) => {
+	return {
+		user_info: state.user_info
+	};
+};
+const mapDispatchToProps = (dispatch, props) => {
+	return {};
+};
+class ContentUI extends Component {
     constructor() {
         super();
         this.state = {
@@ -53,6 +63,25 @@ class Content extends Component {
                 Toast.info("服务器异常", 0.5);
             });
     };
+    clickCollectBasket = foodId => {
+        let params = {
+            foodId,
+            account:this.props.user_info.account
+
+        };
+        api.collectionFood(params)
+            .then(res => {
+                let { code } = res.data;
+                if (code === 0) {
+                    this.getDataList();
+                } else {
+                    Toast.info("收藏失败", 0.5);
+                }
+            })
+            .catch(err => {
+                Toast.info("服务器异常", 0.5);
+            });
+    };
     goDetailsPage = (name, foodId) => {
         // Toast.info("该链接暂未开放", 0.5);
         // this.props.history.push({ pathname: "/kitchen/disheDetail/" + name });
@@ -94,6 +123,7 @@ class Content extends Component {
                                 <div className="origin">
                                     来自 <span>寻味手机</span>
                                 </div>
+                                <div className='control-box'>
                                 <div
                                     className="give-like"
                                     onClick={() => {
@@ -106,6 +136,19 @@ class Content extends Component {
                                     />
                                     <span>{item.praises}</span>
                                 </div>
+                                <div
+                                    className="collect-basket"
+                                    onClick={() => {
+                                        this.clickCollectBasket(item.foodId);
+                                    }}
+                                >
+                                    <img
+                                        src={require("../../assets/images/shoucang_1.png")}
+                                        alt=""
+                                    />
+                                </div>
+                                </div>
+                                
                             </div>
                         </div>
                     );
@@ -114,4 +157,5 @@ class Content extends Component {
         );
     }
 }
-export default withRouter(Content);
+const ContentWrap = connect(mapStateToProps, mapDispatchToProps)(ContentUI);
+export default withRouter(ContentWrap);

@@ -40,6 +40,30 @@ export default {
         //点赞
         return request.post(ORIGIN_PATH + "/food/praiseFoodInfo", params);
     },
+    collectionFood(params) {
+        //收藏
+        return request.post(ORIGIN_PATH + "/relation/collectionFoodInfo", params);
+    }, 
+    getCollectionFoods(params) {
+        //收藏美食列表
+        return request.post(ORIGIN_PATH + "/relation/getUserCollections", params);
+    }, 
+    collectionHistory(params) {
+        //保存历史
+        return request.post(ORIGIN_PATH + "/relation/collectionHistoryInfo", params);
+    },
+    getCollectionHistory(params) {
+        //获取历史记录
+        return request.post(ORIGIN_PATH + "/relation/getHistoryInfo", params);
+    },
+    collectionBasket(params) {
+        //收集菜篮子
+        return request.post(ORIGIN_PATH + "/relation/collectionBasketInfo", params);
+    },
+    getBasketList(params) {
+        //获取菜篮子列表
+        return request.post(ORIGIN_PATH + "/relation/getBasketInfo", params);
+    },
     lookDisheDetails(id) {
         return request.get(
             `http://120.55.28.235/public/getRecipeListByIds.shtml?ids=263893360`

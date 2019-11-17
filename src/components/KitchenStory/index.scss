@@ -41,23 +41,26 @@
                 margin-left: 10px;
             }
         }
-
-        .give-like {
+        .control-box{
             display: flex;
             align-items: center;
-            margin-right: 15px;
-
-            img {
-                width: 12px;
-                height: 12px;
-            }
-
-            span {
-                color: #131212;
-                font-size: 0.24rem;
-                margin-left: 5px;
+            .give-like,.collect-basket {
+               
+                margin-right: 15px;
+    
+                img {
+                    width: 12px;
+                    height: 12px;
+                }
+    
+                span {
+                    color: #131212;
+                    font-size: 0.24rem;
+                    margin-left: 5px;
+                }
             }
         }
+        
 
     }
 }

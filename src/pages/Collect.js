@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
+import {  Toast } from 'antd-mobile';
 import '../styles/collect.scss';
-export default class History extends Component {
+import { connect } from 'react-redux';
+import api from '../api';
+const mapStateToProps = (state, props) => {
+	return {
+		user_info: state.user_info
+	};
+};
+const mapDispatchToProps = (dispatch, props) => {
+	return {};
+};
+class HistoryUI extends Component {
 	constructor() {
 		super();
 		this.state = {
-			showRemove: false
+			showRemove: false,
+			listData:[]
 		};
 	}
 	goBack = () => {
@@ -20,6 +32,32 @@ export default class History extends Component {
 			showRemove: false
 		});
 	};
+	goLogin = () => {
+		this.props.history.push('/kitchen/login');
+	};
+	getCollectList = ()=>{
+		// const { user_info } = this.props;
+		// if (user_info.account) {
+			let params = {account:'kim123'}
+			api.getCollectionFoods(params).then(res=>{
+				let {code,data} = res.data;
+				if(code ===0){
+					this.setState({
+						listData:data
+					})
+				}else{
+					Toast.info('暂无数据');
+				}
+			})
+		// } else {
+		// 	Toast.info('请先登录', 0.5, () => {
+		// 		this.goLogin();
+		// 	});
+		// }
+	}
+	componentWillMount(){
+		this.getCollectList()
+	}
 	render() {
 		let { showRemove } = this.state;
 		let ControlBtn = showRemove
@@ -72,3 +110,5 @@ export default class History extends Component {
 		);
 	}
 }
+const History = connect(mapStateToProps, mapDispatchToProps)(HistoryUI);
+export default History

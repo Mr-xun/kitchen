@@ -1,7 +1,53 @@
 import React, { Component } from 'react';
+import { Toast } from "antd-mobile";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import api from "../../../api";
 import './index.scss';
-export default class MaterialsLook extends Component {
+const mapStateToProps = (state, props) => {
+	return {
+	  user_info: state.user_info,
+	  
+	};
+  };
+  const mapDispatchToProps = (dispatch, props) => {
+	return {};
+  };
+class MaterialsLookUI extends Component {
+	constructor(){
+		super()
+		this.state={
+			listData:[]
+		}
+	}
+	goLogin = () => {
+		this.props.history.push("/kitchen/login");
+	  };
+	  getMaterialsData = () => {
+		// const { user_info } = this.props;
+		// if (user_info.account) {
+		  let params = { account: 'kim123',flag:0 };
+		  api.getBasketList(params).then(res => {
+			let { code, data } = res.data;
+			if (code === 0) {
+			  this.setState({
+				listData: data.foodList
+			  });
+			} else {
+			  Toast.info("暂无数据");
+			}
+		  });
+		// } else {
+		//   Toast.info("请先登录", 0.3, () => {
+		// 	this.goLogin();
+		//   });
+		// }
+	  };
+	  componentWillMount() {
+		this.getMaterialsData();
+	  }
 	render() {
+		
 		return (
 			<div className="materials-content">
 				<div className="materials-box">
@@ -77,3 +123,8 @@ export default class MaterialsLook extends Component {
 		);
 	}
 }
+const MaterialsLook = connect(
+	mapStateToProps,
+	mapDispatchToProps
+  )(MaterialsLookUI);
+  export default withRouter(MaterialsLook);

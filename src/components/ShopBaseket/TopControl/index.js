@@ -3,9 +3,7 @@ import { withRouter } from 'react-router-dom';
 import './index.scss';
 
 class TopControl extends Component {
-	constructor() {
-		super();
-	}
+	
 	goBack = () => {
 		this.props.history.go(-1);
 	};
