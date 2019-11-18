@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  Toast } from 'antd-mobile';
+import { Toast } from 'antd-mobile';
 import '../styles/collect.scss';
 import { connect } from 'react-redux';
 import api from '../api';
@@ -16,7 +16,7 @@ class HistoryUI extends Component {
 		super();
 		this.state = {
 			showRemove: false,
-			listData:[]
+			listData: []
 		};
 	}
 	goBack = () => {
@@ -32,34 +32,72 @@ class HistoryUI extends Component {
 			showRemove: false
 		});
 	};
+	goDetailsPage = (name, foodId) => {
+		if (foodId) {
+			this.props.history.push({
+				pathname: `/kitchen/disheDetail/${name}/${foodId}`
+			});
+		} else {
+			this.props.history.push({
+				pathname: `/kitchen/disheDetail/${name}/null`
+			});
+		}
+	};
 	goLogin = () => {
 		this.props.history.push('/kitchen/login');
 	};
-	getCollectList = ()=>{
-		// const { user_info } = this.props;
-		// if (user_info.account) {
-			let params = {account:'kim123'}
-			api.getCollectionFoods(params).then(res=>{
-				let {code,data} = res.data;
-				if(code ===0){
+	getCollectList = () => {
+		const { user_info } = this.props;
+		if (user_info.account) {
+			let params = { account: user_info.account };
+			api.getCollectionFoods(params).then((res) => {
+				let { code, data } = res.data;
+				if (code === 0) {
 					this.setState({
-						listData:data
-					})
-				}else{
-					Toast.info('暂无数据');
+						listData: data.relations
+					});
+				} else {
+					this.setState({
+						listData: []
+					});
+					Toast.info('暂无数据',0.3);
+				}
+			});
+		} else {
+			Toast.info('请先登录', 0.5, () => {
+				this.goLogin();
+			});
+		}
+	};
+	removeCollectFood = (foodId) => {
+		const { user_info } = this.props;
+		let params = {
+			foodId,
+			account: user_info.account
+		};
+		api
+			.removeCollectionFood(params)
+			.then((res) => {
+				let { code, msg } = res.data;
+				if (code === 0) {
+					Toast.info('取消收藏成功', 0.5);
+					this.getCollectList();
+				} else if (code === -1) {
+					Toast.info(msg, 0.5);
+				} else {
+					Toast.info('取消收藏失败', 0.5);
 				}
 			})
-		// } else {
-		// 	Toast.info('请先登录', 0.5, () => {
-		// 		this.goLogin();
-		// 	});
-		// }
-	}
-	componentWillMount(){
-		this.getCollectList()
+			.catch((err) => {
+				console.log(err);
+				Toast.info('服务器异常', 0.5);
+			});
+	};
+	componentWillMount() {
+		this.getCollectList();
 	}
 	render() {
-		let { showRemove } = this.state;
+		let { showRemove, listData } = this.state;
 		let ControlBtn = showRemove
 			? () => (
 					<div className="control" onClick={this.controlCloseRemove}>
@@ -68,10 +106,26 @@ class HistoryUI extends Component {
 				)
 			: () => (
 					<div className="control" onClick={this.controlOpenRemove}>
-						<img src={require('../assets/images/lanzi.png')} alt="" />
+						<img src={require('../assets/images/clear.png')} alt="" />
 					</div>
 				);
-		let RemoveBtn = showRemove ? <div className="remove">X</div> : null;
+		let RemoveBtn = ({ foodId }) => {
+			if (showRemove) {
+				return (
+					<div
+						className="remove"
+						onClick={() => {
+							this.removeCollectFood(foodId);
+						}}
+					>
+						X
+					</div>
+				);
+			} else {
+				return <span />;
+			}
+		};
+
 		return (
 			<div className="collect-main">
 				<div className="top-title">
@@ -83,26 +137,21 @@ class HistoryUI extends Component {
 				</div>
 				<div className="collect-content">
 					<div className="col-wrap">
-						<div className="col-box">
-							{RemoveBtn}
-							<img src={require('../assets/images/dish_one.jpg')} alt="" />
-							<h5 className="dishe-name">这是名字</h5>
-						</div>
-						<div className="col-box">
-							{RemoveBtn}
-							<img src={require('../assets/images/dish_one.jpg')} alt="" />
-							<h5 className="dishe-name">这是名字</h5>
-						</div>
-						<div className="col-box">
-							{RemoveBtn}
-							<img src={require('../assets/images/dish_one.jpg')} alt="" />
-							<h5 className="dishe-name">这是名字</h5>
-						</div>
-						<div className="col-box">
-							{RemoveBtn}
-							<img src={require('../assets/images/dish_one.jpg')} alt="" />
-							<h5 className="dishe-name">这是名字</h5>
-						</div>
+						{listData.map((item, index) => {
+							return (
+								<div className="col-box" key={index}>
+									<RemoveBtn foodId={item.foodId} />
+									<img
+										src={item.imageid}
+										alt=""
+										onClick={() => {
+											this.goDetailsPage(item.foodName, item.foodId);
+										}}
+									/>
+									<h5 className="dishe-name">{item.foodName}</h5>
+								</div>
+							);
+						})}
 					</div>
 					<p className="tip">快去收藏更多~</p>
 				</div>
@@ -111,4 +160,4 @@ class HistoryUI extends Component {
 	}
 }
 const History = connect(mapStateToProps, mapDispatchToProps)(HistoryUI);
-export default History
+export default History;

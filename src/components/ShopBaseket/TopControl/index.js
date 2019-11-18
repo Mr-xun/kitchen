@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import './index.scss';
 
 class TopControl extends Component {
-	
 	goBack = () => {
 		this.props.history.go(-1);
 	};
@@ -13,7 +12,7 @@ class TopControl extends Component {
 				<div className="back-btn" onClick={this.goBack}>
 					<img src={require('../../../assets/images/fanhui.png')} alt="" />
 				</div>
-				<h3 className="title">菜篮子(2)</h3>
+				<h3 className="title">菜篮子</h3>
 				<div
 					className="control"
 					onClick={() => {

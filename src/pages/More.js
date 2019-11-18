@@ -27,31 +27,36 @@ class MoreUI extends Component {
 		this.props.history.push('/kitchen/login');
 	};
 	goHistory = () => {
-		this.props.history.push('/kitchen/history');
+        const { user_info } = this.props;
+		if (user_info.account) {
+			this.props.history.push('/kitchen/history');
+		} else {
+			Toast.info('请先登录', 0.5, () => {
+				this.goLogin();
+			});
+		}
+		
 	};
 	goCollect = () => {
-		// const { user_info } = this.props;
-		this.props.history.push('/kitchen/collect');
-
-		// if (user_info.account) {
-		// 	this.props.history.push('/kitchen/collect');
-		// } else {
-		// 	Toast.info('请先登录', 0.5, () => {
-		// 		this.goLogin();
-		// 	});
-		// }
+		const { user_info } = this.props;
+		if (user_info.account) {
+			this.props.history.push('/kitchen/collect');
+		} else {
+			Toast.info('请先登录', 0.5, () => {
+				this.goLogin();
+			});
+		}
 	};
 	goShopBasket = () => {
-		this.props.history.push('/kitchen/shopBasket');
 
-		// const { user_info } = this.props;
-		// if (user_info.account) {
-		// 	this.props.history.push('/kitchen/shopBasket');
-		// } else {
-		// 	Toast.info('请先登录', 0.5, () => {
-		// 		this.goLogin();
-		// 	});
-		// }
+		const { user_info } = this.props;
+		if (user_info.account) {
+			this.props.history.push('/kitchen/shopBasket');
+		} else {
+			Toast.info('请先登录', 0.5, () => {
+				this.goLogin();
+			});
+		}
 	};
 	goodReputate = () => {
 		const { user_info } = this.props;
@@ -75,6 +80,7 @@ class MoreUI extends Component {
 				}
 			})
 			.catch((err) => {
+                console.log(err)
 				Toast.info('服务器异常', 1);
 			});
 	};

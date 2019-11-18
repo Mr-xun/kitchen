@@ -35,6 +35,11 @@ class Register extends Component {
                     this.setState({
                         btnLoading: false
                     });
+                }).catch((err) => {
+                    this.setState({
+                        btnLoading: false
+                    });
+                    Toast.info('服务异常，注册失败', 1);
                 });
             } else {
                 Toast.info("请输入完整所需信息", 1);
