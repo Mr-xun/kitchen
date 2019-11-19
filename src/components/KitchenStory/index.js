@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import { Toast, ActivityIndicator } from 'antd-mobile';
+import { Toast, ActivityIndicator, Modal } from 'antd-mobile';
 import { withRouter } from 'react-router-dom';
 import api from '../../api';
 import './index.scss';
+const alert = Modal.alert;
 const mapStateToProps = (state, props) => {
 	return {
 		user_info: state.user_info
@@ -50,9 +50,10 @@ class ContentUI extends Component {
 					Toast.info('网络异常', 0.5);
 				});
 		} else {
-			Toast.info('访问该页面需要先登录', 0.5, () => {
-				this.goLogin();
-			});
+			alert('访问该页面需要先登录', '是否前往登录?', [
+				{ text: '取消', onPress: () => console.log('cancel') },
+				{ text: '确定', onPress: () => this.goLogin() }
+			]);
 		}
 	};
 	componentDidMount() {
@@ -75,21 +76,23 @@ class ContentUI extends Component {
 			.catch((err) => {
 				Toast.info('服务器异常', 0.5);
 			});
-    };
-    removeCollectFood = (foodId) => {
+	};
+	removeCollectFood = (foodId) => {
 		const { user_info } = this.props;
 		let params = {
 			foodId,
 			account: user_info.account
 		};
-		api.removeCollectionFood(params).then((res) => {
-				let { code,msg} = res.data;
+		api
+			.removeCollectionFood(params)
+			.then((res) => {
+				let { code, msg } = res.data;
 				if (code === 0) {
 					Toast.info('取消收藏成功', 0.5);
 					this.getDataList();
-				} else if(code ===-1){
+				} else if (code === -1) {
 					Toast.info(msg, 0.5);
-                }else {
+				} else {
 					Toast.info('取消收藏失败', 0.5);
 				}
 			})
@@ -104,14 +107,16 @@ class ContentUI extends Component {
 			foodId,
 			account: user_info.account
 		};
-		api.collectionFood(params).then((res) => {
-				let { code,msg} = res.data;
+		api
+			.collectionFood(params)
+			.then((res) => {
+				let { code, msg } = res.data;
 				if (code === 0) {
 					Toast.info('收藏成功', 0.5);
 					this.getDataList();
-				} else if(code ===-1){
+				} else if (code === -1) {
 					Toast.info(msg, 0.5);
-                }else {
+				} else {
 					Toast.info('收藏失败', 0.5);
 				}
 			})
