@@ -5,7 +5,7 @@
   "dependencies": {
     "antd-mobile": "^2.3.1",
     "fastclick": "^1.0.6",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-fastclick": "^3.0.2",
